@@ -1,5 +1,6 @@
 require 'csv'
 require 'pry'
+require 'awesome_print'
 
 class CommaDataType
   attr_accessor :raw_data, :parsed
@@ -7,6 +8,7 @@ class CommaDataType
   def initialize(filename)
     @parsed = []
     @raw_data = File.read(filename)
+    parse_file
   end
 
   def parsed_data
@@ -14,16 +16,14 @@ class CommaDataType
   end
 
   def parse_file
-    data_attrs = {}
-    parsed = parsed_data.map do |row|
+    parsed_data.collect do |row|
+      data_attrs = {}
       data_attrs[:last_name] = row[0]
       data_attrs[:first_name] = row[1]
       data_attrs[:gender] = row[2]
       data_attrs[:favorite_color] = row[3]
       data_attrs[:date_of_birth] = row[4]
+      parsed << data_attrs
     end
   end
 end
-
-c = CommaDataType.new("spec/fixtures/comma.txt")
-puts c.parse_file
