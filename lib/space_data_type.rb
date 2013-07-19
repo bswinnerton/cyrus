@@ -1,4 +1,5 @@
-require_relative 'data_type'
+require 'csv'
+require 'data_type'
 
 class CommaDataType < DataType
   def parsed_data
