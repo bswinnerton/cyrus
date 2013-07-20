@@ -8,15 +8,12 @@ class DataType
   def initialize(filename)
     @parsed = []
     @raw_data = File.read(filename)
-    parse_file
-    strip_spaces
+    parse_data
   end
 
-  def strip_spaces
-    parsed.collect do |hash|
-      hash.collect do |k,v|
-        v.strip!
-      end
+  def strip_spaces(hash)
+    hash.each do |k,v|
+      v.strip!
     end
   end
 end
