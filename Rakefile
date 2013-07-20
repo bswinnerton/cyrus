@@ -21,7 +21,7 @@ task :display_records do
   record_set = RecordSet.new(records)
   ap record_set.display_by :gender, :ascending
   ap record_set.display_by :date_of_birth, :ascending
-  ap record_set.display_by :last_name, :ascending
+  ap record_set.display_by :last_name, :descending
 end
 
 task default: :display_records
