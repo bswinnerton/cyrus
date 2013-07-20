@@ -6,4 +6,10 @@ describe Record do
     record = Record.new(comma_data.parsed.first)
     record.first_name.should == "Neil"
   end
+
+  it "should sanitize gender strings" do
+    raw_data = {gender: "M"}
+    record = Record.new(raw_data)
+    record.gender.should == "Male"
+  end
 end
