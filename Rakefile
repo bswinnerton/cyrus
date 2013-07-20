@@ -19,6 +19,9 @@ task :display_records do
   end
 
   record_set = RecordSet.new(records)
+  record_set.display_by :gender
+  record_set.display_by :date_of_birth
+  record_set.display_by :last_name
 end
 
 task default: :display_records
