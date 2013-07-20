@@ -9,5 +9,14 @@ class DataType
     @parsed = []
     @raw_data = File.read(filename)
     parse_file
+    strip_spaces
+  end
+
+  def strip_spaces
+    parsed.collect do |hash|
+      hash.collect do |k,v|
+        v.strip!
+      end
+    end
   end
 end
