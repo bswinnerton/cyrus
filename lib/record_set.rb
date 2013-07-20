@@ -24,6 +24,11 @@ private
 
   def sort_by_date_of_birth(order)
     data
+    if order == :ascending
+      data.sort_by { |record| record.date_of_birth }
+    elsif order == :descending
+      data.sort_by { |record| record.date_of_birth }.reverse
+    end
   end
 
   def sort_by_last_name(order)
