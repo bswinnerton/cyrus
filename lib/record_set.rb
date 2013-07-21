@@ -23,11 +23,12 @@ private
   end
 
   def sort_by_date_of_birth(order)
-    data
     if order == :ascending
-      data.sort_by { |record| record.date_of_birth }
+      data.sort_by! { |record| record.date_of_birth }
+      data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
     elsif order == :descending
-      data.sort_by { |record| record.date_of_birth }.reverse
+      data.sort_by! { |record| record.date_of_birth }.reverse
+      data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
     end
   end
 
@@ -37,5 +38,9 @@ private
     elsif order == :descending
       data.sort_by { |record| record.last_name }.reverse!
     end
+  end
+
+  def format_date(date)
+      date.strftime("%-m/%-d/%Y")
   end
 end

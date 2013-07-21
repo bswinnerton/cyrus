@@ -1,7 +1,8 @@
 require 'date'
 
 class Record
-  attr_reader :last_name, :first_name, :middle_initial, :gender, :favorite_color, :date_of_birth
+  attr_accessor :date_of_birth
+  attr_reader :last_name, :first_name, :middle_initial, :gender, :favorite_color
 
   def initialize(attrs)
     @last_name = attrs[:last_name]
@@ -19,7 +20,6 @@ private
     date_array_num = date_to_i(date_array_str)
 
     formatted_date = Date.new(date_array_num[2], date_array_num[0], date_array_num[1])
-    formatted_date.strftime("%m/%d/%Y")
   end
 
   def date_to_array(date)
