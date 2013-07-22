@@ -5,6 +5,10 @@ require 'awesome_print'
 class DataType
   attr_accessor :parsed, :delimiter, :raw_data
 
+  COMMA_FIELDS = [:last_name, :first_name, :gender, :favorite_color, :date_of_birth]
+  PIPE_FIELDS = [:last_name, :first_name, :middle_initial, :gender, :favorite_color, :date_of_birth]
+  SPACE_FIELDS = [:last_name, :first_name, :middle_initial, :gender, :date_of_birth, :favorite_color]
+
   def initialize(filename, delimiter)
     @parsed = []
     @delimiter = delimiter
@@ -19,48 +23,20 @@ class DataType
   def parse_data
     case delimiter
     when ","
-      parse_comma_data
+      parse(COMMA_FIELDS)
     when "|"
-      parse_pipe_data
+      parse(PIPE_FIELDS)
     when " "
-      parse_space_data
+      parse(SPACE_FIELDS)
     end
   end
 
-  def parse_comma_data
+  def parse(field_type)
     parsed_file.collect do |row|
       data_attrs = {}
-      data_attrs[:last_name] = row[0]
-      data_attrs[:first_name] = row[1]
-      data_attrs[:gender] = row[2]
-      data_attrs[:favorite_color] = row[3]
-      data_attrs[:date_of_birth] = row[4]
-      parsed << strip_spaces(data_attrs)
-    end
-  end
-
-  def parse_pipe_data
-    parsed_file.collect do |row|
-      data_attrs = {}
-      data_attrs[:last_name] = row[0]
-      data_attrs[:first_name] = row[1]
-      data_attrs[:middle_initial] = row[2]
-      data_attrs[:gender] = row[3]
-      data_attrs[:favorite_color] = row[4]
-      data_attrs[:date_of_birth] = row[5]
-      parsed << strip_spaces(data_attrs)
-    end
-  end
-
-  def parse_space_data
-    parsed_file.collect do |row|
-      data_attrs = {}
-      data_attrs[:last_name] = row[0]
-      data_attrs[:first_name] = row[1]
-      data_attrs[:middle_initial] = row[2]
-      data_attrs[:gender] = row[3]
-      data_attrs[:date_of_birth] = row[4]
-      data_attrs[:favorite_color] = row[5]
+      field_type.each_with_index do |field, i|
+        data_attrs[field] = row[i]
+      end
       parsed << strip_spaces(data_attrs)
     end
   end

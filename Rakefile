@@ -19,13 +19,13 @@ task :display_records do
   record_set = RecordSet.new(records)
 
   puts "Output 1:"
-  puts record_set.display_by :gender, :ascending
+  puts record_set.sort_by :gender, :ascending
   puts
   puts "Output 2:"
-  puts record_set.display_by :date_of_birth, :ascending
+  puts record_set.sort_by :date_of_birth, :ascending
   puts
   puts "Output 3:"
-  puts record_set.display_by :last_name, :descending
+  puts record_set.sort_by :last_name, :descending
 end
 
 task default: :display_records
