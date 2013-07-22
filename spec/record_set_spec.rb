@@ -4,9 +4,9 @@ describe RecordSet do
   before :each do
     records = []
 
-    comma_data = CommaDataType.new("data/comma.txt")
-    pipe_data = PipeDataType.new("data/pipe.txt")
-    space_data = SpaceDataType.new("data/space.txt")
+    comma_data = DataType.new("data/comma.txt", ",")
+    pipe_data = DataType.new("data/pipe.txt", "|")
+    space_data = DataType.new("data/space.txt", " ")
     data = [ comma_data, pipe_data, space_data ]
 
     data.each do |datatype|

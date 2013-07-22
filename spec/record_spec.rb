@@ -2,19 +2,19 @@ require 'spec_helper'
 
 describe Record do
   it "should respond to specific attributes if comma delimited" do
-    comma_data = CommaDataType.new("spec/fixtures/comma.txt")
+    comma_data = DataType.new("spec/fixtures/comma.txt", ",")
     record = Record.new(comma_data.parsed.first)
     record.first_name.should == "Neil"
   end
 
   it "should respond to specific attributes if pipe delimited" do
-    pipe_data = PipeDataType.new("spec/fixtures/pipe.txt")
+    pipe_data = DataType.new("spec/fixtures/pipe.txt", "|")
     record = Record.new(pipe_data.parsed.first)
     record.first_name.should == "Steve"
   end
 
   it "should respond to specific attributes if space delimited" do
-    space_data = SpaceDataType.new("spec/fixtures/space.txt")
+    space_data = DataType.new("spec/fixtures/space.txt", " ")
     record = Record.new(space_data.parsed.first)
     record.first_name.should == "Anna"
   end
