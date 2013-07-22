@@ -7,7 +7,7 @@ A record consists of the following 5 fields: last name, first name, gender, date
 [The pipe-delimited file](data/pipe.txt) lists each record as follows:  
 `LastName | FirstName | MiddleInitial | Gender | FavoriteColor | DateOfBirth`  
 [The comma-delimited](data/comma.txt) file looks like this:  
-`LastName, FirstName, Gender, FavoriteColor, DateOfBirth`
+`LastName, FirstName, Gender, FavoriteColor, DateOfBirth`  
 [The space-delimited](data/space.txt) file looks like this:  
 `LastName FirstName MiddleInitial Gender DateOfBirth FavoriteColor`
 
