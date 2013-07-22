@@ -8,12 +8,14 @@ describe Record do
   end
 
   it "should sanitize gender strings" do
-    raw_data = {gender: "M", date_of_birth: "11-25-1989"}
+    raw_data = {gender: "M"}
     record = Record.new(raw_data)
     record.gender.should == "Male"
   end
 
   it "should sanitize date strings" do
-    pending
+    raw_data = {date_of_birth: "11-25-1989"}
+    record = Record.new(raw_data)
+    record.date_of_birth.should == "11/25/1989"
   end
 end

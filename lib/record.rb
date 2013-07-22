@@ -8,21 +8,12 @@ class Record
     @last_name = attrs[:last_name]
     @first_name = attrs[:first_name]
     @middle_inital = attrs[:middle_initial]
-    @gender = sanitize_gender(attrs[:gender])
+    @gender = sanitize_gender(attrs[:gender]) unless attrs[:gender].nil?
     @favorite_color = attrs[:favorite_color]
-    @date_of_birth = sanitize_date(attrs[:date_of_birth])
+    @date_of_birth = sanitize_date(attrs[:date_of_birth]) unless attrs[:date_of_birth].nil?
   end
 
-private
-
-  def sanitize_date(date_string)
-    date_array_str = date_to_array(date_string)
-    date_array_num = date_to_i(date_array_str)
-
-    formatted_date = Date.new(date_array_num[2], date_array_num[0], date_array_num[1])
-  end
-
-  def date_to_array(date)
+  def self.date_to_array(date)
     if date.include? "/"
       date.split "/"
     elsif date.include? "-"
@@ -30,10 +21,11 @@ private
     end
   end
 
-  def date_to_i(date_array)
-    date_array.map do |date|
-      date.to_i
-    end
+private
+
+  def sanitize_date(date_string)
+    date_array = Record.date_to_array(date_string)
+    Date.new(date_array[2].to_i, date_array[0].to_i, date_array[1].to_i).strftime("%-m/%-d/%Y")
   end
 
   def sanitize_gender(gender)
