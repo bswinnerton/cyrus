@@ -19,6 +19,7 @@ task :display_records do
   end
 
   record_set = RecordSet.new(records)
+
   puts "Output 1:"
   puts record_set.display_by :gender, :ascending
   puts
