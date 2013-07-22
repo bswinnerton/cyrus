@@ -11,6 +11,6 @@ describe CommaDataType do
 
   it "should parse comma delimited data" do
     parsed_data = @raw_comma_data.parsed
-    expect(parsed_data.first).to include(first_name: "Neil")
+    expect(parsed_data.first).to include first_name: "Neil"
   end
 end

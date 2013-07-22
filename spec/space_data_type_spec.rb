@@ -11,6 +11,6 @@ describe SpaceDataType do
 
   it "should parse space delimited data" do
     parsed_data = @raw_space_data.parsed
-    expect(parsed_data.first).to include(first_name: "Anna")
+    expect(parsed_data.first).to include first_name: "Anna"
   end
 end

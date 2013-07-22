@@ -11,6 +11,6 @@ describe PipeDataType do
 
   it "should parse pipe delimited data" do
     parsed_data = @raw_pipe_data.parsed
-    expect(parsed_data.first).to include(first_name: "Steve")
+    expect(parsed_data.first).to include first_name: "Steve"
   end
 end
