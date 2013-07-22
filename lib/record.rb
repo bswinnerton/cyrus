@@ -1,8 +1,7 @@
 require 'date'
 
 class Record
-  attr_accessor :date_of_birth
-  attr_reader :last_name, :first_name, :middle_initial, :gender, :favorite_color
+  attr_reader :last_name, :first_name, :middle_initial, :gender, :favorite_color, :date_of_birth
 
   def initialize(attrs)
     @last_name = attrs[:last_name]
