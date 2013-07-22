@@ -19,24 +19,32 @@ class RecordSet
 private
 
   def sort_by_gender(order)
-    data
+    if order == :ascending
+      formatted_data = data.sort_by! { |record| [record.gender, record.last_name] }
+      formatted_data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
+    elsif order == :descending
+      formatted_data = data.sort_by! { |record| [record.gender, record.last_name] }.reverse
+      formatted_data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
+    end
   end
 
   def sort_by_date_of_birth(order)
     if order == :ascending
-      data.sort_by! { |record| record.date_of_birth }
-      data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
+      formatted_data = data.sort_by! { |record| record.date_of_birth }
+      formatted_data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
     elsif order == :descending
-      data.sort_by! { |record| record.date_of_birth }.reverse
-      data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
+      formatted_data = data.sort_by! { |record| record.date_of_birth }.reverse
+      formatted_data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
     end
   end
 
   def sort_by_last_name(order)
     if order == :ascending
-      data.sort_by { |record| record.last_name }
+      formatted_data = data.sort_by { |record| record.last_name }
+      formatted_data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
     elsif order == :descending
-      data.sort_by { |record| record.last_name }.reverse!
+      formatted_data = data.sort_by { |record| record.last_name }.reverse!
+      formatted_data.each { |record| record.date_of_birth = format_date(record.date_of_birth) }
     end
   end
 
