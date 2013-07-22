@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe SpaceDataType do
+describe Space::DataType do
   before :each do
-    @raw_space_data = SpaceDataType.new("spec/fixtures/space.txt")
+    @raw_space_data = Space::DataType.new("spec/fixtures/space.txt")
   end
 
   it "should instantiate a new object" do
-    @raw_space_data.should be_a_kind_of(SpaceDataType)
+    @raw_space_data.should be_a_kind_of(Space::DataType)
   end
 
   it "should parse space delimited data" do

@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe CommaDataType do
+describe Comma::DataType do
   before :each do
-    @raw_comma_data = CommaDataType.new("spec/fixtures/comma.txt")
+    @raw_comma_data = Comma::DataType.new("spec/fixtures/comma.txt")
   end
 
   it "should instantiate a new object" do
-    @raw_comma_data.should be_a_kind_of(CommaDataType)
+    @raw_comma_data.should be_a_kind_of(Comma::DataType)
   end
 
   it "should parse comma delimited data" do
