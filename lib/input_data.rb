@@ -1,6 +1,4 @@
 require 'csv'
-require 'pry'
-require 'awesome_print'
 
 class InputData
   attr_accessor :parsed, :delimiter, :raw_data
