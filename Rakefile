@@ -1,6 +1,13 @@
+require 'rake'
+require 'rake/testtask'
 require_relative 'lib/input_data'
 require_relative 'lib/record'
 require_relative 'lib/record_set'
+
+Rake::TestTask.new do |t|
+  t.pattern = 'spec/*_spec.rb'
+  t.libs.push 'spec'
+end
 
 task :display_records do
   records = []

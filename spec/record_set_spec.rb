@@ -1,7 +1,7 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
-describe RecordSet do
-  before :each do
+class TestRecordSet < MiniTest::Unit::TestCase
+  def setup
     records = []
 
     comma_data = InputData.new("data/comma.txt", ",")
@@ -18,26 +18,26 @@ describe RecordSet do
     @record_set = RecordSet.new(records)
   end
 
-  it "should ensure fields are in correct order" do
+  def test_fields_in_order
     output = @record_set.sort_by :date_of_birth, :ascending
-    output.first.should == "Abercrombie Neil Male 2/13/1943 Tan"
+    assert_equal output.first, "Abercrombie Neil Male 2/13/1943 Tan"
   end
 
-  it "should sort by gender (females before males) then by last name ascending" do
+  def test_sort_by_gender
     output = @record_set.sort_by :gender, :ascending
-    output.first.should include "Hingis"
-    output.last.should include "Smith"
+    assert_includes output.first, "Hingis"
+    assert_includes output.last, "Smith"
   end
 
-  it "should sort by birth date, ascending" do
+  def test_sort_by_birth_date
     output = @record_set.sort_by :date_of_birth, :ascending
-    output.first.should include "2/13/1943"
-    output.last.should include "3/3/1985"
+    assert_includes output.first, "2/13/1943"
+    assert_includes output.last, "3/3/1985"
   end
 
-  it "should sort by last name, descending" do
+  def test_sort_by_last_name
     output = @record_set.sort_by :last_name, :descending
-    output.first.should include "Smith"
-    output.last.should include "Abercrombie"
+    assert_includes output.first, "Smith"
+    assert_includes output.last, "Abercrombie"
   end
 end

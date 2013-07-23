@@ -1,33 +1,33 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
-describe Record do
-  it "should respond to specific attributes if comma delimited" do
+class TestRecord < MiniTest::Unit::TestCase
+  def test_attributes_if_comma
     comma_data = InputData.new("spec/fixtures/comma.txt", ",")
     record = Record.new(comma_data.parsed.first)
-    record.first_name.should == "Neil"
+    assert_equal record.first_name, "Neil"
   end
 
-  it "should respond to specific attributes if pipe delimited" do
+  def test_attributes_if_pipe
     pipe_data = InputData.new("spec/fixtures/pipe.txt", "|")
     record = Record.new(pipe_data.parsed.first)
-    record.first_name.should == "Steve"
+    assert_equal record.first_name, "Steve"
   end
 
-  it "should respond to specific attributes if space delimited" do
+  def test_attributes_if_space
     space_data = InputData.new("spec/fixtures/space.txt", " ")
     record = Record.new(space_data.parsed.first)
-    record.first_name.should == "Anna"
+    assert_equal record.first_name, "Anna"
   end
 
-  it "should sanitize gender strings" do
+  def test_sanitize_gender_attribute
     raw_data = {gender: "M"}
     record = Record.new(raw_data)
-    record.gender.should == "Male"
+    assert_equal record.gender, "Male"
   end
 
-  it "should sanitize date strings" do
+  def test_sanitize_date_attribute
     raw_data = {date_of_birth: "11-25-1989"}
     record = Record.new(raw_data)
-    record.date_of_birth.should == "11/25/1989"
+    assert_equal record.date_of_birth, "11/25/1989"
   end
 end

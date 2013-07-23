@@ -1,36 +1,36 @@
-require 'spec_helper'
+require_relative 'spec_helper'
 
-describe InputData do
-  it "should instantiate a new object when comma delimited" do
+class TestInputData < MiniTest::Unit::TestCase
+  def test_instantiation_of_comma_data
     raw_comma_data = InputData.new("spec/fixtures/comma.txt", ",")
-    raw_comma_data.should be_a_kind_of(InputData)
+    assert_kind_of InputData, raw_comma_data
   end
 
-  it "should instantiate a new object when pipe delimited" do
+  def test_instantiation_of_pipe_data
     raw_pipe_data = InputData.new("spec/fixtures/pipe.txt", "|")
-    raw_pipe_data.should be_a_kind_of(InputData)
+    assert_kind_of InputData, raw_pipe_data
   end
 
-  it "should instantiate a new object when space delimited" do
+  def test_instantiation_of_space_data
     raw_space_data = InputData.new("spec/fixtures/space.txt", " ")
-    raw_space_data.should be_a_kind_of(InputData)
+    assert_kind_of InputData, raw_space_data
   end
 
-  it "should parse comma delimited data" do
+  def test_parse_of_comma_data
     raw_comma_data = InputData.new("spec/fixtures/comma.txt", ",")
     parsed_data = raw_comma_data.parsed
-    expect(parsed_data.first).to include first_name: "Neil"
+    assert_equal parsed_data.first[:first_name], "Neil"
   end
 
-  it "should parse pipe delimited data" do
+  def test_parse_of_pipe_data
     raw_pipe_data = InputData.new("spec/fixtures/pipe.txt", "|")
     parsed_data = raw_pipe_data.parsed
-    expect(parsed_data.first).to include first_name: "Steve"
+    assert_equal parsed_data.first[:first_name], "Steve"
   end
 
-  it "should parse space delimited data" do
+  def test_parse_of_space_data
     raw_space_data = InputData.new("spec/fixtures/space.txt", " ")
     parsed_data = raw_space_data.parsed
-    expect(parsed_data.first).to include first_name: "Anna"
+    assert_equal parsed_data.first[:first_name], "Anna"
   end
 end
