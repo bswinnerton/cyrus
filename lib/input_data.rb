@@ -2,7 +2,7 @@ require 'csv'
 require 'pry'
 require 'awesome_print'
 
-class DataType
+class InputData
   attr_accessor :parsed, :delimiter, :raw_data
 
   COMMA_FIELDS = [:last_name, :first_name, :gender, :favorite_color, :date_of_birth]

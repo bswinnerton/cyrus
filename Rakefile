@@ -1,13 +1,13 @@
-require_relative 'lib/data_type'
+require_relative 'lib/input_data'
 require_relative 'lib/record'
 require_relative 'lib/record_set'
 
 task :display_records do
   records = []
 
-  comma_data = DataType.new("data/comma.txt", ",")
-  pipe_data = DataType.new("data/pipe.txt", "|")
-  space_data = DataType.new("data/space.txt", " ")
+  comma_data = InputData.new("data/comma.txt", ",")
+  pipe_data = InputData.new("data/pipe.txt", "|")
+  space_data = InputData.new("data/space.txt", " ")
   data = [ comma_data, pipe_data, space_data ]
 
   data.each do |datatype|
